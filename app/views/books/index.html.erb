@@ -1,19 +1,26 @@
 <h2>Books</h2>
-
 <% @books.each do |book| %>
 
-  <P>Title</P>
-  <span>
-    <%= link_to book.title, book_path(book.id) %>
+<P>Title</P>
+ <%= book.title %>
+<p>Body</p>
+ <%= book.body %>
+<p>show edit destroy</p>
+ <span>
+    <%= link_to 'show', book_path(book.id) %>
+    <%= link_to 'edit', edit_book_path(book.id) %>
   </span>
+
+<% end %>
+
 
 <p></p>
 <h3>New book</h3>
-<%= form_with model: @books do |f| %>
-  <h4>Title</h4>
+<%= form_with model: @book do |f| %>
+  <p>Title</p>
   <%= f.text_field :title %>
 
-  <h4>Body</h4>
+  <p>Body</p>
   <%= f.text_area :body %>
 
   <%= f.submit 'Create Book' %>
